@@ -20,9 +20,9 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            React!
+            Reactttttt!
           </a>
-          <span>, </span>
+          <span>, </span>S
           <a
             className="App-link"
             href="https://redux.js.org/"
