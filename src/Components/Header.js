@@ -30,10 +30,8 @@ const Header = () => {
                     <img src="/images/movie-icon.svg"/>
                     <span>MOVIES</span>
                 </a>
-
-
-
             </NavMenu>
+            <UserImg src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"/>
         </Nav>
       
     )
@@ -53,6 +51,7 @@ const Logo = styled.img`
 `
 const NavMenu = styled.div`
     display: flex;
+    flex: 1;
 
     a {
         display: flex;
@@ -69,4 +68,10 @@ const NavMenu = styled.div`
         }
     }
 
+`
+
+const UserImg = styled.img`
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
 `
