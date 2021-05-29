@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Components/Header';
 import Home from './Components/Home'
 import './App.css';
+import Detail from './Components/Detail';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,8 +13,19 @@ import {
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Home />
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/detail">
+            <Detail />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+      
+
     </div>
   );
 }
