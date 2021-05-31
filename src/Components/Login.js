@@ -50,8 +50,8 @@ const CTA = styled.div`
     width: 90%;
     display: flex;
     flex-direction: column;
-    
-
+    margin-top: 100px;
+    align-items: center; 
 `
 const CTAlogoOne = styled.img`
 
@@ -71,7 +71,7 @@ const SignUp = styled.a`
     margin-top: 8px;
     margin-bottom: 12px;
 
-    :hover {
+    &:hover {
         background: #0483ee;
 `
 const Description = styled.div`
@@ -81,5 +81,5 @@ const Description = styled.div`
         line-height: 1.5;
 `
 const CTAlogoTwo = styled.img`
-
+        width: 90%;
 `
