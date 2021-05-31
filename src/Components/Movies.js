@@ -1,35 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
+import { selectMovies} from "../features/movie/movieSlice"
+import { useSelector } from "react-redux"
 
 const Movies = () => {
+    const movies = useSelector(selectMovies)
+
+    console.log("this is movies", movies)
+
     return (
         <Container>
             <h4>Recomended for You</h4>
             <Content>
-                <Wrap>
-                    <img src="https://lumiere-a.akamaihd.net/v1/images/disney-plus_everything-coming_social_97471cc5.jpeg" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://lumiere-a.akamaihd.net/v1/images/disney-plus_everything-coming_social_97471cc5.jpeg" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://lumiere-a.akamaihd.net/v1/images/disney-plus_everything-coming_social_97471cc5.jpeg" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://lumiere-a.akamaihd.net/v1/images/disney-plus_everything-coming_social_97471cc5.jpeg" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://lumiere-a.akamaihd.net/v1/images/disney-plus_everything-coming_social_97471cc5.jpeg" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://lumiere-a.akamaihd.net/v1/images/disney-plus_everything-coming_social_97471cc5.jpeg" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://lumiere-a.akamaihd.net/v1/images/disney-plus_everything-coming_social_97471cc5.jpeg" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://lumiere-a.akamaihd.net/v1/images/disney-plus_everything-coming_social_97471cc5.jpeg" />
-                </Wrap>
+                {movies &&
+                    movies.map((movie)=> (
+                        <Wrap>
+                        <img src={movie.cardImg} />
+                        </Wrap>
+                    ))
+                
+                }           
             </Content>
         </Container>
     )
