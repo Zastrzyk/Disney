@@ -1,7 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useParams} from "react-router-dom"
+import db from "../firebase"
+import { setMovies } from '../features/movie/movieSlice'
 
 const Detail = () => {
+
+    const { id } = useParams();
+    const [ movie, setMovie ] = useState()
+    
+    useEffect(()=> {
+        db.collection("movies")
+        .doc(id)
+        .get()
+        .then(()=> {
+            if(doc.exists){
+                setMovie(doc.data())
+            } else {
+
+            }
+        })
+    }, [])
+
+    
+
     return (
         <Container>
             <Background>
