@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useParams} from "react-router-dom"
 import db from "../firebase"
-import { setMovies } from '../features/movie/movieSlice'
 
 const Detail = () => {
 
@@ -13,11 +12,11 @@ const Detail = () => {
         db.collection("movies")
         .doc(id)
         .get()
-        .then(()=> {
+        .then((doc)=> {
             if(doc.exists){
                 setMovie(doc.data())
             } else {
-
+                //save to home page
             }
         })
     }, [])
@@ -26,39 +25,39 @@ const Detail = () => {
 
     return (
         <Container>
-            <Background>
-                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/4F39B7E16726ECF419DD7C49E011DD95099AA20A962B0B10AA1881A70661CE45/scale?width=1440&aspectRatio=1.78&format=jpeg" />
-            </Background>
-            <ImageTitle>
-                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/D7AEE1F05D10FC37C873176AAA26F777FC1B71E7A6563F36C6B1B497CAB1CEC2/scale?width=1440&aspectRatio=1.78" />
-            </ImageTitle>
-            <Controls>
-                <PlayButton>
-                    <img src="/images/play-icon-black.png" />
-                    <span>PLAY</span>
-                </PlayButton>
-                <TrailerButton>
-                    <img src="/images/play-icon-white.png" />
-                    <span>Trailer</span>
-                </TrailerButton>
-                <AddButton>
-                    <span>+</span>
-                </AddButton>
-                <GroupWatchButton>
-                    <img src="/images/group-icon.png" />
-                </GroupWatchButton>           
-          </Controls>
-            <SubTitle>
-                    2018  7m  Family, Fantasy, Kids, Animation
-            </SubTitle>
-            <Description>
-                   Reprehenderit consequat mollit eu amet est do consequat dolore eu Lorem duis.
-                   Elit tempor dolor voluptate enim ad proident ex eiusmod cupidatat fugiat amet eiusmod. 
-                   Commodo aute incididunt ipsum ipsum laborum proident aliquip sit minim sunt excepteur laborum dolor enim. 
-                   Do eu exercitation fugiat et aute est do do ad ullamco proident esse. Cillum velit esse veniam exercitation. 
-                   Aliqua nisi est qui commodo laborum minim enim tempor est mollit. Veniam culpa tempor consequat sit. 
-                   Laboris veniam voluptate aute officia exercitation voluptate reprehenderit ullamco aliqua excepteur Lorem tempor.
-            </Description>
+            {movie && (
+            <>
+                <Background>
+                    <img src={movie.backgroundImg} />
+                </Background>
+                <ImageTitle>
+                    <img src={movie.title} />
+                </ImageTitle>
+                <Controls>
+                    <PlayButton>
+                        <img src="/images/play-icon-black.png" />
+                        <span>PLAY</span>
+                    </PlayButton>
+                    <TrailerButton>
+                        <img src="/images/play-icon-white.png" />
+                        <span>Trailer</span>
+                    </TrailerButton>
+                    <AddButton>
+                        <span>+</span>
+                    </AddButton>
+                    <GroupWatchButton>
+                        <img src="/images/group-icon.png" />
+                    </GroupWatchButton>           
+                </Controls>
+                <SubTitle>
+                    {movie.subTitle}
+                </SubTitle>
+                <Description>
+                    {movie.description}
+                </Description>
+            </>
+            )}
+            
         </Container>
     )
 }
