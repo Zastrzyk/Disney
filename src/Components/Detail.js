@@ -19,7 +19,7 @@ const Detail = () => {
                 //save to home page
             }
         })
-    }, [id])
+    }, [])
 
   
 
@@ -124,8 +124,9 @@ const PlayButton = styled.div`
 const TrailerButton = styled(PlayButton)`
     background: rgb(0, 0, 0, 0.3);
     border: 1px solid rgb(249, 249, 249);
-    color: rgb (249, 249, 249);
+    color: white;
     text-transform: uppercase;
+
 `
 
 const AddButton = styled.button`
