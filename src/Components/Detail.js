@@ -14,14 +14,14 @@ const Detail = () => {
         .get()
         .then((doc)=> {
             if(doc.exists){
-                setMovie(doc.data())
+                setMovie(doc.data());
             } else {
                 //save to home page
             }
         })
-    }, [])
+    }, [id])
 
-    
+  
 
     return (
         <Container>
