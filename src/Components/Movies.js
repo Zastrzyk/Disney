@@ -4,7 +4,7 @@ import { selectMovies} from "../features/movie/movieSlice"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
-const Movies = () => {
+function Movies () {
     const movies = useSelector(selectMovies)
 
 

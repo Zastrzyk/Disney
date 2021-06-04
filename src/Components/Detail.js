@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useParams} from "react-router-dom"
 import db from "../firebase"
 
-const Detail = () => {
+function Detail () {
 
     const { id } = useParams();
     const [ movie, setMovie ] = useState()
@@ -19,7 +19,7 @@ const Detail = () => {
                 //save to home page
             }
         })
-    }, [])
+    }, )
 
   
 
