@@ -1,15 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { auth, provider} from "../firebase"
+import { useHistory } from "react-router-dom"
 import { 
     selectUserName,
     selectUserPhoto,
-    setUserLogin
+    setUserLogin,
+    setSignOut
 } from "../features/user/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 
 function Header  () {
     const dispatch = useDispatch()
+    const history = useHistory()
     const userName = useSelector(selectUserName)
     const userPhoto = useSelector(selectUserPhoto)
 
@@ -22,7 +25,17 @@ function Header  () {
                email: user.email,
                photo: user.photoURL
             }))
+            history.push("/home")
         })
+    }
+
+    const signOut = () => {
+        auth.signOut()
+        .then(() => {
+            dispatch(setSignOut())
+            history.push("/login")
+        })
+        
     }
 
     return (
@@ -60,7 +73,9 @@ function Header  () {
                         <span>MOVIES</span>
                     </a>
                 </NavMenu>
-                <UserImg src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"/>
+                <UserImg 
+                onClick={signOut}
+                src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"/>
                 </>
             }
             
