@@ -16,6 +16,20 @@ function Header  () {
     const userName = useSelector(selectUserName)
     const userPhoto = useSelector(selectUserPhoto)
 
+    // useEffect(() => {
+    //     auth.onAuthStateChanged(async (user) => {
+    //         if(user){
+    //             dispatch(setUserLogin({
+    //                 name: user.displayName,
+    //                 email: user.email,
+    //                 photo: user.photoURL
+    //             }))
+    //             history.push("/")
+    //         }
+    //     })
+    // }, [])
+    // smothing wrong with useEffect function
+
     const signIn = () => {
         auth.signInWithPopup(provider)
         .then((result) => {
